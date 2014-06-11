@@ -4,6 +4,6 @@
 
 #define NULL ((void *)0)
 
-typedef size_t _arch_size_t;
+typedef _arch_size_t size_t;
 
 #endif /* _STDDEF_H */

@@ -6,7 +6,6 @@
 		- locale.h
 		- setjmp.h
 		- stdarg.h
-		- time.h
 	- Done:
 		- stdio.h
 		- ctype.h
@@ -16,6 +15,7 @@
 		- stdlib.h
 		- assert.h (somewhat)
 		- signal.h (stubs)
+		- time.h
 - Start libc code
 	- ???
 	- Profit
