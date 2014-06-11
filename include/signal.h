@@ -7,5 +7,6 @@ enum {
 };
 
 void ( *signal( int sig, void (*handler)( int )))( int );
+int raise( int sig );
 
 #endif /* _SIGNAL_H */
