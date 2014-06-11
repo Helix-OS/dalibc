@@ -8,7 +8,6 @@
 		- setjmp.h
 		- signal.h
 		- stdarg.h
-		- stdlib.h
 		- time.h
 	- Done:
 		- stdio.h
@@ -16,6 +15,7 @@
 		- string.h
 		- stddef.h (somewhat)
 		- math.h
+		- stdlib.h
 - Start libc code
 	- ???
 	- Profit
