@@ -5,7 +5,6 @@
 		- float.h
 		- limits.h
 		- locale.h
-		- math.h
 		- setjmp.h
 		- signal.h
 		- stdarg.h
@@ -16,6 +15,7 @@
 		- ctype.h
 		- string.h
 		- stddef.h (somewhat)
+		- math.h
 - Start libc code
 	- ???
 	- Profit
