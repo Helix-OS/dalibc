@@ -1,6 +1,5 @@
 - Fill in headers
 	- Todo:
-		- errno.h
 		- float.h
 		- locale.h
 		- setjmp.h
@@ -16,6 +15,7 @@
 		- signal.h (stubs)
 		- time.h
 		- limits.h
+		- errno.h
 - Start libc code
 	- ???
 	- Profit
