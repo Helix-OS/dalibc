@@ -15,7 +15,7 @@
 		- string.h
 		- time.h
 	- Done:
-		x stdio.h
+		- stdio.h
 - Start libc code
 	- ???
 	- Profit
