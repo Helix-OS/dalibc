@@ -9,13 +9,13 @@
 		- setjmp.h
 		- signal.h
 		- stdarg.h
-		- stddef.h
 		- stdlib.h
 		- time.h
 	- Done:
 		- stdio.h
 		- ctype.h
 		- string.h
+		- stddef.h (somewhat)
 - Start libc code
 	- ???
 	- Profit
