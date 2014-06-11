@@ -2,7 +2,6 @@
 	- Todo:
 		- errno.h
 		- float.h
-		- limits.h
 		- locale.h
 		- setjmp.h
 		- stdarg.h
@@ -16,6 +15,7 @@
 		- assert.h (somewhat)
 		- signal.h (stubs)
 		- time.h
+		- limits.h
 - Start libc code
 	- ???
 	- Profit
