@@ -1,6 +1,5 @@
 - Fill in headers
 	- Todo:
-		- assert.h
 		- errno.h
 		- float.h
 		- limits.h
@@ -16,6 +15,7 @@
 		- stddef.h (somewhat)
 		- math.h
 		- stdlib.h
+		- assert.h (somewhat)
 - Start libc code
 	- ???
 	- Profit
