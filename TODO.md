@@ -1,6 +1,5 @@
 - Fill in headers
 	- Todo:
-		- ctype.h
 		- assert.h
 		- errno.h
 		- float.h
@@ -12,10 +11,11 @@
 		- stdarg.h
 		- stddef.h
 		- stdlib.h
-		- string.h
 		- time.h
 	- Done:
 		- stdio.h
+		- ctype.h
+		- string.h
 - Start libc code
 	- ???
 	- Profit
