@@ -5,7 +5,6 @@
 		- limits.h
 		- locale.h
 		- setjmp.h
-		- signal.h
 		- stdarg.h
 		- time.h
 	- Done:
@@ -16,6 +15,7 @@
 		- math.h
 		- stdlib.h
 		- assert.h (somewhat)
+		- signal.h (stubs)
 - Start libc code
 	- ???
 	- Profit
