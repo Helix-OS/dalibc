@@ -1,19 +1,21 @@
 - Fill in headers
-	- stdio.h
-	- assert.h
-	- ctype.h
-	- errno.h
-	- float.h
-	- limits.h
-	- locale.h
-	- math.h
-	- setjmp.h
-	- signal.h
-	- stdarg.h
-	- stddef.h
-	- stdlib.h
-	- string.h
-	- time.h
+	- Todo:
+		- ctype.h
+		- assert.h
+		- errno.h
+		- float.h
+		- limits.h
+		- locale.h
+		- math.h
+		- setjmp.h
+		- signal.h
+		- stdarg.h
+		- stddef.h
+		- stdlib.h
+		- string.h
+		- time.h
+	- Done:
+		x stdio.h
 - Start libc code
 	- ???
 	- Profit
@@ -22,3 +24,4 @@
 - Start host directories
 	- helix
 	- linux (optional)
+	- none
