@@ -2,10 +2,13 @@ SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 
 .c.o:
-	@echo $<
+	@echo CC $<
+	@$(CC) $(CFLAGS) -c $<
 
 all: $(OBJ)
 	@echo Host makefile stub
 
-.PHONY: all
+clean:
+	@-rm *.o
 
+.PHONY: all
