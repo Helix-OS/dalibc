@@ -6,7 +6,6 @@ OBJ = $(SRC:.c=.o)
 	@$(CC) $(CFLAGS) -c $<
 
 all: $(OBJ)
-	@echo Host makefile stub
 
 clean:
 	@-rm *.o

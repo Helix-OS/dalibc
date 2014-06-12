@@ -7,7 +7,8 @@ CFLAGS=
 	@$(CC) $(CFLAGS) -c $<
 
 all: $(OBJ)
-	@echo Host makefile stub
+	@echo LD -o libc.o *.o
+	$(LD) $(LDFLAGS) -r -o libc.o *.o
 
 clean:
 	@-rm *.o
