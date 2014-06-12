@@ -1,5 +1,7 @@
 #ifndef _STDIO_H
 #define _STDIO_H 1
+#include <stddef.h>
+#include <stdarg.h>
 
 #define L_TMPNAM 16
 
@@ -10,6 +12,10 @@ typedef struct FILE {
 	int permissions;
 	char unget;
 } FILE;
+
+typedef struct fpos {
+	unsigned long position;
+} fpos_t;
 
 FILE *fopen( const char *filename, const char *mode );
 FILE *freopen( const char *filename, const char *mode, FILE *stream );
@@ -26,7 +32,7 @@ void setbuf( FILE *stream, char *buf );
 
 int fprintf( FILE *stream, const char *format, ... );
 int printf( const char *format, ... );
-int sprintf( har *s, const char *format, ... );
+int sprintf( char *s, const char *format, ... );
 
 int vprintf( const char *format, va_list arg );
 int vfprintf( FILE *stream, const char *format, va_list arg );

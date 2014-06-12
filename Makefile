@@ -1,14 +1,14 @@
 ARCH 		= i386
 HOST 		= none
 PREFIX 		= /usr/local
-INCLUDE 	= -I$(shell pwd)/include
-INCLUDE 	+=-I$(shell pwd)/$(ARCH)/include -I$(shell pwd)/$(HOST)/include
+INCLUDE 	= -I$(shell pwd)/include -I$(shell pwd)/arch/$(ARCH)/include -I$(shell pwd)/hosts/$(HOST)/include
 
 CC=cc
 LD=ld
 CFLAGS=$(INCLUDE) -nodefaultlibs -nostdlib -nostartfiles -fno-builtin --sysroot=$(shell pwd)
 
 all:
+	@echo $(CFLAGS)
 	@cd hosts/$(HOST); make CC=$(CC) HOST=$(HOST) ARCH=$(ARCH) CFLAGS="$(CFLAGS)"
 	@cd libc; make CC=$(CC) HOST=$(HOST) ARCH=$(ARCH) CFLAGS="$(CFLAGS)"
 
