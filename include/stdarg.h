@@ -9,11 +9,10 @@
 	list = (char *)&arg;\
 }
 
-#define va_arg( list, type ) ({ \
-	va_arg ret = list; \
-	list += sizeof( type ); \
-	*(type *)ret; \
-})
+#define va_arg( list, type ) (\
+	list += sizeof( type ),\
+	*(type *)(list - sizeof( type ))\
+)
 
 #define va_end( list ) (list)
 
