@@ -7,13 +7,13 @@ typedef struct div {
 	int rem;
 } div_t;
 
-typedef struct div {
+typedef struct ldiv {
 	long quot;
 	long rem;
 } ldiv_t;
 
 double atof( const char *s );
-double atoi( const char *s );
+int    atoi( const char *s );
 long   atol( const char *s );
 double strtod( const char *s, char **endp );
 long   strtol( const char *s, char **endp, int base );
