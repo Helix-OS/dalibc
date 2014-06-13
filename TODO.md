@@ -3,7 +3,6 @@
 		- float.h
 		- locale.h
 		- setjmp.h
-		- stdarg.h
 	- Done:
 		- stdio.h
 		- ctype.h
@@ -16,12 +15,16 @@
 		- time.h
 		- limits.h
 		- errno.h
+		- stdarg.h (arch specific)
 - Start libc code
+	- stdlib
+		- memory allocation functions
 	- ???
 	- Profit
 - Start arch directories
 	- i386
+	- amd64
 - Start host directories
 	- helix
-	- linux (optional)
+	- linux
 	- none
