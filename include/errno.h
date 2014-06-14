@@ -3,6 +3,12 @@
 
 #define errno (*_dalibc_get_errno( ))
 
+/** Error numbers */
+enum {
+	ENONE,
+	ENOMEM,
+};
+
 int *_dalibc_get_errno( );
 void _dalibc_set_errno( int error );
 

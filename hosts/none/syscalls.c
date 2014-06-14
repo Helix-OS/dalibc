@@ -7,7 +7,7 @@ void _exit( int error ){
 }
 
 int _spawn( char *name, char **argv, char **envp ){
-	errno = -1; // TODO: Put in correct errno once implemented, ENOMEM
+	errno = ENOMEM;
 	return -1;
 }
 
@@ -28,6 +28,6 @@ int write( int descript, void *ptr, int len ){
 } 
 
 void *sbrk( int increment ){
-	errno = -1; // TODO: Put in correct errno once implemented, ENOMEM
+	errno = ENOMEM;
 	return (void *)-1;
 }

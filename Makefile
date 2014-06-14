@@ -5,7 +5,7 @@ INCLUDE 	= -I$(shell pwd)/include -I$(shell pwd)/arch/$(ARCH)/include -I$(shell 
 
 CC=cc
 LD=ld
-CFLAGS=$(INCLUDE) -nodefaultlibs -nostdlib -nostartfiles -fno-builtin --sysroot=$(shell pwd)
+CFLAGS=$(INCLUDE) -nodefaultlibs -nostdlib -nostartfiles -fno-builtin --sysroot=$(shell pwd) -g
 
 all:
 	@echo $(CFLAGS)
