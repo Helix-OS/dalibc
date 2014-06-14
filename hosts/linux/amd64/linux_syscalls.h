@@ -18,28 +18,30 @@ int syscall_##fn(){ \
 #define DEFN_SYSCALL1( rettype, fn, num, P1) \
 rettype syscall_##fn(P1 p1){ \
 	rettype a; \
-	asm volatile( "syscall" : "=a" (a) : "0" (num), "b"((long)p1)); \
+	asm volatile( "syscall" : "=a" (a) : "0" (num), "D"((long)p1)); \
 	return a; \
 }
 
 #define DEFN_SYSCALL2( rettype, fn, num, P1, P2) \
 rettype syscall_##fn(P1 p1, P2 p2){ \
 	rettype a; \
-	asm volatile( "syscall" : "=a" (a) : "0" (num), "b"((long)p1), "c"((long)p2)); \
+	asm volatile( "syscall" : "=a" (a) : "0" (num), "D"((long)p1), "S"((long)p2)); \
 	return a; \
 }
 
 #define DEFN_SYSCALL3( rettype, fn, num, P1, P2, P3) \
 rettype syscall_##fn(P1 p1, P2 p2, P3 p3){ \
 	rettype a; \
-	asm volatile( "syscall" : "=a" (a) : "0" (num), "b"((long)p1), "c"((long)p2), "d"((long)p3)); \
+	asm volatile( "syscall" : "=a" (a) : "0" (num), "D"((long)p1), "S"((long)p2), "d"((long)p3)); \
 	return a; \
 }
 
+// TODO: Properly handle syscalls with more than 4 args by moving the 4 arg to r10, 5th to r8, etc
+//       GCC doesn't provide a straight-forward way to do this it seems, not sure if r10 is actually the right constraint
 #define DEFN_SYSCALL4( rettype, fn, num, P1, P2, P3, P4) \
 rettype syscall_##fn(P1 p1, P2 p2, P3 p3, P4 p4){ \
 	rettype a; \
-	asm volatile( "syscall" : "=a" (a) : "0" (num), "b"((long)p1), "c"((long)p2), "d"((long)p3), "S"((long)p4));\
+	asm volatile( "syscall" : "=a" (a) : "0" (num), "D"((long)p1), "S"((long)p2), "d"((long)p3), "r10"((long)p4));\
 	return a; \
 }
 
