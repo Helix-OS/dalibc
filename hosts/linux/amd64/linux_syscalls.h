@@ -62,7 +62,7 @@ DECL_SYSCALL1( int, exit, int );
 DECL_SYSCALL2( int, open, const char *, int );
 DECL_SYSCALL1( int, close, int );
 DECL_SYSCALL3( int, read, int, void *, int );
-DECL_SYSCALL3( int, write, int, void *, int );
+DECL_SYSCALL3( int, write, int, const void *, int );
 DECL_SYSCALL1( void *, brk, void * );
 
 #endif

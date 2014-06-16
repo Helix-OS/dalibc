@@ -23,7 +23,7 @@ int read( int descript, void *ptr, int len ){
 	return 0;
 }
 
-int write( int descript, void *ptr, int len ){
+int write( int descript, const void *ptr, int len ){
 	return 0;
 } 
 

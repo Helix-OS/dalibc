@@ -20,7 +20,7 @@ typedef struct fpos {
 FILE *fopen( const char *filename, const char *mode );
 FILE *freopen( const char *filename, const char *mode, FILE *stream );
 FILE *fflush( FILE *stream );
-FILE *fclose( FILE *stream );
+int   fclose( FILE *stream );
 
 int remove( const char *filename );
 int rename( const char *oldname, const char *newname );
