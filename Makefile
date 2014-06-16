@@ -17,6 +17,10 @@ clean:
 	@-cd libc; make clean HOST=$(HOST) ARCH=$(ARCH)
 
 install:
-	@echo Makefile stub
+	@mkdir -p "$(PREFIX)"/{lib,include/dalibc}
+	@cd hosts/$(HOST); make install HOST=$(HOST) ARCH=$(ARCH) PREFIX="$(PREFIX)"
+	@cd libc; make install HOST=$(HOST) ARCH=$(ARCH)
+	cp -rv include/* "$(PREFIX)"/include
+	cp -rv arch/$(ARCH)/include/* "$(PREFIX)"/include
 
 .PHONY: all

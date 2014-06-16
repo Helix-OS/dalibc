@@ -18,7 +18,8 @@ archstuff:
 	@cd $(ARCH); make CC=$(CC) HOST=$(HOST) ARCH=$(ARCH) CFLAGS="$(CFLAGS) -I$(shell pwd)/$(ARCH)"
 
 install:
-	@echo Makefile install stub
+	cp $(ARCH)/crt0.o $(PREFIX)/lib
+	cp syscalls.o $(PREFIX)/lib
 
 clean:
 	@-rm *.o

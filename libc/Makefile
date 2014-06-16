@@ -24,5 +24,8 @@ clean:
 		cd ..; \
 	done;
 
+install:
+	cp libc.o $(PREFIX)/lib
+
 .PHONY: all
 
