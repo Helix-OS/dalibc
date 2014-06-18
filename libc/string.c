@@ -30,12 +30,39 @@ char *strchr( const char *haystack, int needle );
 char *strrchr( const char *haystack, int needle );
 
 char *strpbrk( const char *s, const char *accept );
-char *strstr( const char *haystack, const char *needle );
+
+char *strstr( const char *haystack, const char *needle ){
+	char *ret = NULL;
+	int i, k;
+
+	if ( haystack && needle ){
+		for ( i = 0; haystack[i]; i++ ){
+			for ( k = 0; haystack[i + k] && haystack[i + k] == needle[k]; k++ );
+
+			if ( needle[k] == '\0' ){
+				ret = (char *)haystack + i;
+				break;
+			}
+		}
+	}
+
+	return ret;
+} 
+
 char *strtok( char *str, const char *delim );
 
 size_t strspn( const char *s, const char *accept );
 size_t strcspn( const char *s, const char *reject );
-size_t strlen( const char *s );
+
+size_t strlen( const char *s ){
+	size_t ret = 0;
+
+	if ( s )
+		for ( ; s[ret]; ret++ );
+
+	return ret;
+}
+	
 char *strerror( int error );
 
 int strcmp( const char *a, const char *b ){
