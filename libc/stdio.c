@@ -4,19 +4,27 @@
 
 FILE *stdin, *stdout, *stderr;
 
+int dalibc_get_modeflags( const char *mode ){
+	int ret;
+
+	// Yet another TODO: Add the proper "mode" numbers here
+	if ( strcmp( mode, "r" ) == 0 )		ret = 0;
+	else if ( strcmp( mode, "w" ) == 0 )	ret = 0;
+	else if ( strcmp( mode, "a" ) == 0 )	ret = 0;
+	else if ( strcmp( mode, "r+" ) == 0 )	ret = 0;
+	else if ( strcmp( mode, "w+" ) == 0 )	ret = 0;
+	else if ( strcmp( mode, "a+" ) == 0 )	ret = 0;
+
+	return ret;
+}
+
 FILE *fopen( const char *filename, const char *mode ){
 	FILE *ret;
 	int fd;
 	int flags = 0;
 
-	// Yet another TODO: Add the proper "mode" numbers here
-	if ( strcmp( mode, "r" ) == 0 )		flags = 0;
-	else if ( strcmp( mode, "w" ) == 0 )	flags = 0;
-	else if ( strcmp( mode, "a" ) == 0 )	flags = 0;
-	else if ( strcmp( mode, "r+" ) == 0 )	flags = 0;
-	else if ( strcmp( mode, "w+" ) == 0 )	flags = 0;
-	else if ( strcmp( mode, "a+" ) == 0 )	flags = 0;
 
+	flags = dalibc_get_modeflags( mode );
 	fd = open( filename, flags );
 
 	if ( fd >= 0 ){
@@ -28,9 +36,24 @@ FILE *fopen( const char *filename, const char *mode ){
 			ret->permissions = flags;
 
 		} else {
-			//abort( );
-			ret = NULL;
+			; //abort( );
 		}
+	}
+
+	return ret;
+}
+
+/* POSIX-specific call */
+FILE *fdopen( int fd, const char *mode ){
+	FILE *ret;
+	int flags;
+
+	ret = malloc( sizeof( FILE ));
+
+	if ( ret ){
+		ret->filedesc = fd;
+		ret->readp = ret->writep = ret->unget = 0;
+		ret->permissions = dalibc_get_modeflags( mode );
 	}
 
 	return ret;
@@ -49,9 +72,14 @@ int  fclose( FILE *stream ){
 
 size_t fread( void *ptr, size_t size, size_t nobj, FILE *stream ){
 	size_t ret = 0;
+	size_t i,
+	       amount_read;
 
 	if ( stream ){
-		ret = read( stream->filedesc, ptr, size * nobj );
+		for ( i = 0; i < size * nobj && amount_read; i += amount_read )
+			amount_read = read( stream->filedesc, ptr, size * nobj - i );
+
+		ret = i;
 	}
 
 	return ret;

@@ -19,6 +19,7 @@ typedef struct fpos {
 } fpos_t;
 
 FILE *fopen( const char *filename, const char *mode );
+FILE *fdopen( int fd, const char *mode );
 FILE *freopen( const char *filename, const char *mode, FILE *stream );
 FILE *fflush( FILE *stream );
 int   fclose( FILE *stream );
