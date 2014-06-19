@@ -35,23 +35,28 @@ int write( int descript, const void *ptr, int len ){
 	return syscall_write( descript, ptr, len );
 } 
 
+extern void *_end; // TODO: provided by gcc, write a linker script to make sure "end" is defined
 static char *initial_placement = 0;
+
 void *sbrk( int increment ){
 	char *new_placement;
 	void *ret;
 
 	if ( initial_placement ){
-		new_placement += increment;
+		new_placement = initial_placement + increment;
 
-		if ( initial_placement == (void *)syscall_brk( initial_placement )){
+		if ( initial_placement == (void *)syscall_brk( new_placement )){
 			ret = (void *)-1;
 			errno = ENOMEM;
 		} else {
-			ret = new_placement;
+			ret = initial_placement;
+			initial_placement += increment;
 		}
 
 	} else {
-		initial_placement = ret = (void *)syscall_brk( (void *)-1 );
+		initial_placement = ret = syscall_brk( 0 );
+		initial_placement += increment;
+		syscall_brk( initial_placement );
 	}
 
 	return ret;
