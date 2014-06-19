@@ -68,4 +68,7 @@ int feof( FILE *stream );
 int ferror( FILE *stream );
 void perror ( const char *s );
 
+// Initialized by the c runtime
+extern FILE *stdin, *stdout, *stderr;
+
 #endif /* _STDIO_H */
