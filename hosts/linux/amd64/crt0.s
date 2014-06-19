@@ -3,6 +3,7 @@ BITS 64
 
 extern _exit
 extern main
+extern dalibc_linux_enter_program
 
 global _start
 _start:
@@ -20,7 +21,7 @@ _start:
     ; pop environment variable off stack
     pop rdx
 
-    call main
+    call dalibc_linux_enter_program
     mov rdi, rax
     call _exit
 

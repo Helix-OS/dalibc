@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <dalibc/syscalls.h>
 
+FILE *stdin, *stdout, *stderr;
+
 FILE *fopen( const char *filename, const char *mode ){
 	FILE *ret;
 	int fd;
