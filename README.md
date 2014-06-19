@@ -19,7 +19,7 @@ For cross-compiling, you must specify the cross compiler and linker as well, e.g
     make ARCH=i386 HOST=helix CC=$pathtocc/bin/i586-elf-gcc LD=$pathtocc/bin/i586-elf-ld
 
 If nothing is specified at build time, ARCH defaults to "i386" and HOST defaults to "none".
-The "none" host provides bare-bones syscall stubs for needed for linking.
+The "none" host provides bare-bones syscall stubs needed for linking.
 
 Porting
 -------
