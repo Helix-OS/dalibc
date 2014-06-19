@@ -2,8 +2,9 @@ DaLibc
 ======
 A simple, portable C library.
 Initially this library is aiming for ansi C (C89) compliance, with C99/C11 and POSIX being future goals. 
+This is developed as part of Helix OS.
 
-Just starting, there's nothing here yet.
+At the moment there's some headers and a few basic functions, nowhere near close to finished yet.
 
 Contributing
 - - - - - - -
