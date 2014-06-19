@@ -2,6 +2,7 @@
 #define _STDIO_H 1
 #include <stddef.h>
 #include <stdarg.h>
+#include <string.h>
 
 #define L_TMPNAM 16
 
