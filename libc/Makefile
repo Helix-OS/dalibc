@@ -2,7 +2,7 @@ SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 CFLAGS=
 
-SRCDIRS=stdlib
+SRCDIRS=stdio stdlib
 SRCBUF=$(patsubst %, %.srcdir, $(SRCDIRS))
 
 .c.o:
