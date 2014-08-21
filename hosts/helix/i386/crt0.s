@@ -1,5 +1,6 @@
 extern main
 extern _exit
+extern dalibc_helix_enter_program
 
 global _start
 _start:
@@ -11,7 +12,7 @@ _start:
     push ebx
     push eax
 
-    call main
+    call dalibc_helix_enter_program
     push eax
     call _exit
 
