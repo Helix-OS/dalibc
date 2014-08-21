@@ -35,6 +35,7 @@ void setbuf( FILE *stream, char *buf );
 int fprintf( FILE *stream, const char *format, ... );
 int printf( const char *format, ... );
 int sprintf( char *s, const char *format, ... );
+int snprintf( char *s, const char *format, ... );
 
 int vprintf( const char *format, va_list arg );
 int vfprintf( FILE *stream, const char *format, va_list arg );
