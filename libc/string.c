@@ -26,7 +26,21 @@ char *strncpy( char *dest, const char *src, size_t n ){
 char *strcat( char *dest, const char *src );
 char *strncat( char *dest, const char *src, size_t n );
 
-char *strchr( const char *haystack, int needle );
+char *strchr( const char *haystack, int needle ){
+	char *ret = NULL;
+	unsigned i;
+	int found = 0;
+
+	for ( i = 0; haystack[i] && !found; i++ ){
+		if ( haystack[i] == needle ){
+			ret = haystack + i;
+			found = 1;
+		}
+	}
+
+	return ret;
+}
+
 char *strrchr( const char *haystack, int needle );
 
 char *strpbrk( const char *s, const char *accept );
@@ -69,7 +83,7 @@ int strcmp( const char *a, const char *b ){
 	int ret = 0;
 	int i;
 
-	for ( i = 0; a[i] == b[i]; i++ );
+	for ( i = 0; a[i] && b[i] && ( a[i] == b[i] ); i++ );
 
 	if ( a[i] || b[i] )
 		ret = ( a[i] > b[i] )? 1 : -1;

@@ -8,7 +8,22 @@ int fgetc( FILE *stream ){
 	return ret;
 }
 
-char *fgets( char *s, int n, FILE *stream );
+char *fgets( char *s, int n, FILE *stream ){
+	char *ret = NULL;
+	int i;
+	int c = 1;
+
+	for ( i = 0; i < n && c != '\n' && c > 0; i++ ){
+		c = fgetc( stream );
+		s[i] = c;
+	}
+
+	s[i] = 0;
+
+	ret = i? s : NULL;
+
+	return ret;
+}
 
 int fputc( int c, FILE *stream ){
 	fwrite( &c, 1, 1, stream );

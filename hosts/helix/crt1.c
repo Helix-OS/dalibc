@@ -4,9 +4,16 @@
 extern int main( int argc, char *argv[], char *envp[] );
 
 void dalibc_helix_initialize( ){
+	/*
 	stdin  = fdopen( 0, "r" );
 	stdout = fdopen( 1, "r" );
 	stderr = fdopen( 2, "r" );
+	*/
+
+	// maybe possibly sort of properly do std* files
+	stdin  = fopen( "/test/devices/keyboard", "r" );
+	stdout = fopen( "/test/devices/console", "w" );
+	stderr = fopen( "/test/devices/console", "w" );
 
 	if ( !stdin || !stdout || !stderr )
 		;// abort( );
