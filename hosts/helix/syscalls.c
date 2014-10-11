@@ -13,6 +13,8 @@ DEFN_SYSCALL4( int, spawn, SYSCALL_SPAWN, int, char **, char **, int );
 DEFN_SYSCALL3( int, readdir, SYSCALL_READDIR, int, dirent_t *, int );
 DEFN_SYSCALL3( int, waitpid, SYSCALL_WAITPID, unsigned, int *, int );
 DEFN_SYSCALL1( void *, sbrk, SYSCALL_SBRK, int );
+DEFN_SYSCALL1( int, chroot, SYSCALL_CHROOT, const char * );
+DEFN_SYSCALL1( int, chdir, SYSCALL_CHDIR, const char * );
 
 void _exit( int error ){
 	syscall_exit( error );

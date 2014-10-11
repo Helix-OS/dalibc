@@ -63,6 +63,8 @@ typedef enum {
 	SYSCALL_READDIR,
 	SYSCALL_WAITPID,
 	SYSCALL_SBRK,
+	SYSCALL_CHROOT,
+	SYSCALL_CHDIR,
 } syscall_t;
 
 DECL_SYSCALL0( int, test );
@@ -75,5 +77,7 @@ DECL_SYSCALL4( int, spawn, int, char **, char **, int );
 DECL_SYSCALL3( int, waitpid, unsigned, int *, int );
 DECL_SYSCALL3( int, readdir, int, dirent_t *, int );
 DECL_SYSCALL1( void *, sbrk, int );
+DECL_SYSCALL1( int, chroot, const char * );
+DECL_SYSCALL1( int, chdir, const char * );
 
 #endif
