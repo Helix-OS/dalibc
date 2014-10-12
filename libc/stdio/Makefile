@@ -3,18 +3,17 @@ OBJ = $(SRC:.c=.o)
 CFLAGS=
 
 .c.o:
-	@echo CC $<
+	@echo "[libc] CC $<"
 	@$(CC) $(CFLAGS) -c $<
 
-stdio: $(OBJ)
-	@echo LD -o $@.o *.o
-	$(LD) $(LDFLAGS) -r -o $@.o *.o
-	@mv $@.o ..
+stdio.o: $(OBJ)
+	@echo "[libc stdio] LD -o $@ *.o"
+	@$(LD) $(LDFLAGS) -r -o $@ *.o
+	@cp $@ ../stdio_lib.o
 
-all: stdio
+all: stdio.o
 
 clean:
-	@-rm *.o
+	@-rm -f *.o
 
-.PHONY: stdio
-
+.PHONY: all

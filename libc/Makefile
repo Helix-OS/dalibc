@@ -12,9 +12,11 @@ SRCBUF=$(patsubst %, %.srcdir, $(SRCDIRS))
 %.srcdir: %
 	@cd "$<"; make CC=$(CC) HOST=$(HOST) ARCH=$(ARCH) CFLAGS="$(CFLAGS)"
 
-all: $(OBJ) $(SRCBUF) 
-	@echo LD -o libc.o *.o
-	$(LD) $(LDFLAGS) -r -o libc.o *.o
+libc.o: $(OBJ)
+	@echo "[libc] LD -o libc.o *.o"
+	@$(LD) $(LDFLAGS) -r -o libc.o *.o
+
+all: $(SRCBUF) libc.o
 
 clean:
 	@-rm *.o
@@ -25,7 +27,7 @@ clean:
 	done;
 
 install:
-	cp libc.o $(PREFIX)/lib
+	@cp libc.o $(PREFIX)/lib
 
 .PHONY: all
 

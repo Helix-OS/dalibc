@@ -18,8 +18,8 @@ archstuff:
 	@cd $(ARCH); make CC=$(CC) HOST=$(HOST) ARCH=$(ARCH) CFLAGS="$(CFLAGS) -I$(shell pwd)/$(ARCH)"
 
 install:
-	cp $(ARCH)/*.o $(PREFIX)/lib
-	cp *.o $(PREFIX)/lib
+	@cp $(ARCH)/*.o $(PREFIX)/lib
+	@cp *.o $(PREFIX)/lib
 
 clean:
 	@-rm *.o
