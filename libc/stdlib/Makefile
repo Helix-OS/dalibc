@@ -1,17 +1,15 @@
 SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
-CFLAGS=
+
+all: $(OBJDIR)/stdlib.o
+
+$(OBJDIR)/stdlib.o: $(OBJ)
+	@echo "[libc stdlib] LD -o $@ *.o"
+	@$(LD) $(LDFLAGS) -r -o $@ *.o
 
 .c.o:
 	@echo "[libc stdlib] CC $<"
 	@$(CC) $(CFLAGS) -c $<
-
-stdlib.o: $(OBJ)
-	@echo "[libc stdlib] LD -o $@ *.o"
-	@$(LD) $(LDFLAGS) -r -o $@ *.o
-	@cp $@ ../stdlib_lib.o
-
-all: stdlib.o
 
 clean:
 	@-rm -f *.o
