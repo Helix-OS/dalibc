@@ -4,25 +4,13 @@
 extern int main( int argc, char *argv[], char *envp[] );
 
 void dalibc_helix_initialize( ){
-	/*
 	stdin  = fdopen( 0, "r" );
-	stdout = fdopen( 1, "r" );
-	stderr = fdopen( 2, "r" );
-	*/
-
-	// maybe possibly sort of properly do std* files
-	stdin  = fopen( "/test/devices/keyboard", "r" );
-	stdout = fopen( "/test/devices/console", "w" );
-	stderr = fopen( "/test/devices/console", "w" );
-	/*
-	stdin  = fopen( "/devices/keyboard", "r" );
-	stdout = fopen( "/devices/console", "w" );
-	stderr = fopen( "/devices/console", "w" );
-	*/
+	stdout = fdopen( 1, "w" );
+	stderr = fdopen( 2, "w" );
 
 	if ( !stdin || !stdout || !stderr )
 		*((int *)0xa0000000) = 1; // just crash
-	    // abort( ); // This is what should be done
+	    // TODO: implement abort()
 }
 
 void dalibc_helix_deinitialize( ){
