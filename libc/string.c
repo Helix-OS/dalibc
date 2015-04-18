@@ -23,8 +23,31 @@ char *strncpy( char *dest, const char *src, size_t n ){
 	return dest;
 }
 
-char *strcat( char *dest, const char *src );
-char *strncat( char *dest, const char *src, size_t n );
+char *strcat( char *dest, const char *src ){
+	char *ret = dest;
+    size_t i;
+
+	for ( i = 0; dest[i]; i++ );
+
+    if ( i ) strcpy( dest + i - 1, src );
+    else     strcpy( dest + i, src );
+
+    dest[i] = 0;
+
+	return ret;
+}
+
+char *strncat( char *dest, const char *src, size_t n ){
+	char *ret = dest;
+    size_t i;
+
+	for ( i = 0; dest[i]; i++ );
+	strncpy( dest + i, src, n );
+
+    dest[i + n] = 0;
+
+	return ret;
+}
 
 char *strchr( const char *haystack, int needle ){
 	char *ret = NULL;
