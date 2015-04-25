@@ -15,6 +15,7 @@ DEFN_SYSCALL3( int, waitpid, SYSCALL_WAITPID, unsigned, int *, int );
 DEFN_SYSCALL1( void *, sbrk, SYSCALL_SBRK, int );
 DEFN_SYSCALL1( int, chroot, SYSCALL_CHROOT, const char * );
 DEFN_SYSCALL1( int, chdir, SYSCALL_CHDIR, const char * );
+DEFN_SYSCALL3( int, sysinfo, SYSCALL_SYSINFO, unsigned, unsigned, void * );
 
 void _exit( int error ){
 	syscall_exit( error );

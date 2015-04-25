@@ -72,14 +72,18 @@ int  fclose( FILE *stream ){
 
 size_t fread( void *ptr, size_t size, size_t nobj, FILE *stream ){
 	size_t ret = 0;
-	size_t i,
-	       amount_read;
+	size_t i, amount_read;
 
 	if ( stream ){
-		for ( i = 0; i < size * nobj && amount_read; i += amount_read )
-			amount_read = read( stream->filedesc, ptr, size * nobj - i );
+		for ( i = 0; i < size * nobj; i += amount_read ){
+			amount_read = read( stream->filedesc, ptr + i, size * nobj - i );
+
+			if ( !amount_read )
+				break;
+		}
 
 		ret = i;
+		//ret = read( stream->filedesc, ptr, size * nobj );
 	}
 
 	return ret;
