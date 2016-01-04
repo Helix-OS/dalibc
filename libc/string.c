@@ -116,7 +116,17 @@ int strcmp( const char *a, const char *b ){
 
 int strncmp( const char *a, const char *b, size_t n );
 
-void *memcpy( void *dest, const void *src, size_t n );
+void *memcpy( void *dest, const void *src, size_t n ){
+	char *dest_bytes = dest;
+	const char *src_bytes = src;
+
+	while (n--) {
+		*(dest_bytes++) = *(src_bytes++);
+	}
+
+	return dest;
+}
+
 void *memmove( void *dest, const void *src, size_t n );
 int   memcmp( const void *a, const void *b, size_t n );
 void *memchr( const void *s, int c, size_t n );
