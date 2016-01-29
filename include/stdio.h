@@ -1,10 +1,12 @@
 #ifndef _STDIO_H
 #define _STDIO_H 1
+#include <dalibc/syscalls.h>
 #include <stddef.h>
 #include <stdarg.h>
 #include <string.h>
 
 #define L_TMPNAM 16
+#define EOF (-1)
 
 typedef struct FILE {
 	int filedesc;
@@ -12,6 +14,7 @@ typedef struct FILE {
 	int writep;
 	int permissions;
 	char unget;
+	int has_unget;
 } FILE;
 
 typedef struct fpos {

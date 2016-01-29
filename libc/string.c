@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdlib.h>
 
 char *strcpy( char *dest, const char *src ){
 	unsigned i;
@@ -88,7 +89,27 @@ char *strstr( const char *haystack, const char *needle ){
 
 char *strtok( char *str, const char *delim );
 
-size_t strspn( const char *s, const char *accept );
+size_t strspn( const char *s, const char *accept ){
+	size_t i = 0;
+
+	for ( ; s[i]; i++ ){
+		size_t k;
+		unsigned found = 0;
+
+		for ( k = 0; accept[k]; k++ ){
+			if ( accept[k] == s[i] ){
+				found = 1;
+				break;
+			}
+		}
+
+		if ( !found )
+			break;
+	}
+
+	return i;
+}
+
 size_t strcspn( const char *s, const char *reject );
 
 size_t strlen( const char *s ){
@@ -115,6 +136,12 @@ int strcmp( const char *a, const char *b ){
 }
 
 int strncmp( const char *a, const char *b, size_t n );
+
+char *strdup( const char *s ){
+	char *ret = malloc( strlen( s ) + 1 );
+	strcpy( ret, s );
+	return ret;
+}
 
 void *memcpy( void *dest, const void *src, size_t n ){
 	char *dest_bytes = dest;

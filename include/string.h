@@ -20,6 +20,7 @@ size_t strlen( const char *s );
 char *strerror( int error );
 int strcmp( const char *a, const char *b );
 int strncmp( const char *a, const char *b, size_t n );
+char *strdup( const char *s );
 
 void *memcpy( void *dest, const void *src, size_t n );
 void *memmove( void *dest, const void *src, size_t n );

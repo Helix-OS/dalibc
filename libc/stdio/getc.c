@@ -2,8 +2,19 @@
 
 int fgetc( FILE *stream ){
 	char ret;
+	int temp;
 
-	fread( &ret, 1, 1, stream );
+	if ( stream->has_unget == 1 ){
+		ret = stream->unget;
+		stream->has_unget = 0;
+
+	} else {
+		temp = fread( &ret, 1, 1, stream );
+	}
+
+	if ( temp < 0 ){
+		ret = temp;
+	}
 
 	return ret;
 }
@@ -61,4 +72,9 @@ int puts( const char *s ){
 	return fputs( s, stdout );
 }
 
-int ungetc( int c, FILE *stream );
+int ungetc( int c, FILE *stream ){
+	stream->unget = c;
+	stream->has_unget = 1;
+
+	return c;
+}

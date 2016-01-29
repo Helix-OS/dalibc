@@ -22,7 +22,7 @@ void *uheap_alloc( uheap_t *heap, unsigned size ){
 
 	if ( binnum < NUM_BINS ){
 		heap_block_t *temp;
-		printf( "Allocating %u bytes in bin %u\n", binnum * BLOCK_SIZE, binnum );
+		//printf( "Allocating %u bytes in bin %u\n", binnum * BLOCK_SIZE, binnum );
 
 		if ( heap->bins[binnum] ){
 			temp = heap->bins[binnum];
@@ -48,7 +48,7 @@ void uheap_free( uheap_t *heap, void *ptr ){
 		heap_block_t *temp = uheap_get_memblock( ptr );
 		unsigned binnum = temp->size / BLOCK_SIZE;
 
-		printf( "Freeing block of size %u into bin %u\n", temp->size, binnum );
+		//printf( "Freeing block of size %u into bin %u\n", temp->size, binnum );
 
 		temp->next = heap->bins[binnum];
 		heap->bins[binnum] = temp;

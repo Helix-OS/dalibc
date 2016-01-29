@@ -72,14 +72,16 @@ int  fclose( FILE *stream ){
 
 size_t fread( void *ptr, size_t size, size_t nobj, FILE *stream ){
 	size_t ret = 0;
-	size_t i, amount_read;
+	size_t i;
+	int amount_read;
 
 	if ( stream ){
 		for ( i = 0; i < size * nobj; i += amount_read ){
 			amount_read = read( stream->filedesc, ptr + i, size * nobj - i );
 
-			if ( !amount_read )
+			if ( amount_read <= 0 ){
 				break;
+			}
 		}
 
 		ret = i;
@@ -91,9 +93,19 @@ size_t fread( void *ptr, size_t size, size_t nobj, FILE *stream ){
 
 size_t fwrite( const void *ptr, size_t size, size_t nobj, FILE *stream ){
 	size_t ret = 0;
+	size_t i;
+	int amount_written;
 
 	if ( stream ){
-		ret = write( stream->filedesc, ptr, size * nobj );
+		for ( i = 0; i < size * nobj; i += amount_written ){
+			amount_written = write( stream->filedesc, ptr + i, size * nobj - i );
+
+			if ( amount_written <= 0 ){
+				break;
+			}
+		}
+
+		ret = i;
 	}
 
 	return ret;

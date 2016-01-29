@@ -66,6 +66,11 @@ typedef enum {
 	SYSCALL_CHROOT,
 	SYSCALL_CHDIR,
 	SYSCALL_SYSINFO,
+	SYSCALL_LSEEK,
+	SYSCALL_PIPE,
+	SYSCALL_FCNTL,
+	SYSCALL_POLL,
+	//SYSCALL_FSTAT,
 } syscall_t;
 
 DECL_SYSCALL0( int, test );
@@ -74,12 +79,16 @@ DECL_SYSCALL2( int, open, const char *, int );
 DECL_SYSCALL1( int, close, int );
 DECL_SYSCALL3( int, read, int, void *, int );
 DECL_SYSCALL3( int, write, int, const void *, int );
-DECL_SYSCALL4( int, spawn, int, char **, char **, int );
+DECL_SYSCALL4( int, spawn, int, char **, char **, int * );
 DECL_SYSCALL3( int, waitpid, unsigned, int *, int );
 DECL_SYSCALL3( int, readdir, int, dirent_t *, int );
 DECL_SYSCALL1( void *, sbrk, int );
 DECL_SYSCALL1( int, chroot, const char * );
 DECL_SYSCALL1( int, chdir, const char * );
 DECL_SYSCALL3( int, sysinfo, unsigned, unsigned, void * );
+DECL_SYSCALL3( int, lseek, int, long, int );
+DECL_SYSCALL1( int, pipe, int * );
+DECL_SYSCALL3( int, fcntl, int, int, int );
+DECL_SYSCALL3( int, poll, void *, unsigned, int );
 
 #endif
